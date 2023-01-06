@@ -1,3 +1,4 @@
+//file:noinspection GradlePackageUpdate
 plugins {
     id 'java'
 }
@@ -14,9 +15,10 @@ ext {
 }
 
 dependencies {
-    //noinspection GradlePackageUpdate
+
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:${junitVersion}'
-    //noinspection GradlePackageUpdate
+
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:${junitVersion}'
 }
 
