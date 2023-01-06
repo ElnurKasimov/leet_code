@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.8.1'
+}
+
+dependencies {
+    //noinspection GradlePackageUpdate
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:${junitVersion}'
+    //noinspection GradlePackageUpdate
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:${junitVersion}'
+}
+
+test {
+    useJUnitPlatform()
+}
