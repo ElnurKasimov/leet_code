@@ -1,6 +1,7 @@
 package PivotIndex;
 
 import java.util.Arrays;
+import java.util.Random;
 
 //Given an array of integers nums, calculate the pivot index of this array.
 //The pivot index is the index where the sum of all the numbers strictly to the left of the index
@@ -22,7 +23,22 @@ import java.util.Arrays;
 //Right sum = nums[4] + nums[5] = 5 + 6 = 11
 
 public class Solution {
+    private static final int MAX_ARRAY_SIZE = 104;
+    private static final int MIN_ARRAY_SIZE = 1;
+    private static final int MAX_VALUE = 1000;
+    private static final int MIN_VALUE = -1000;
     public int pivotIndex(int[] nums) {
+
+        if(nums.length < MIN_ARRAY_SIZE || nums.length > MAX_ARRAY_SIZE) {
+            throw new ArrayIndexOutOfBoundsException("Array size more than " + MAX_ARRAY_SIZE + " or less than " + MIN_ARRAY_SIZE);
+        }
+        //noinspection ForLoopReplaceableByForEach
+        for (int i = 0; i < nums.length; i++) {
+            if(nums[i] < MIN_VALUE || nums[i] > MAX_VALUE) {
+                throw new IllegalArgumentException("Value of array element more than " + MAX_VALUE + " or less than " + MIN_VALUE);
+            }
+        }
+
         int result=-1;
         int sumLeft = 0;
         int sumRight = Arrays.stream(nums).sum() - nums[0];
