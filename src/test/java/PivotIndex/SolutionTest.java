@@ -5,8 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.Stream;
 
@@ -25,7 +23,7 @@ class SolutionTest {
     void testParametrizedPivotIndexWorksCorrectlyWithoutNullAndCheckingConstraints (int[] currentArray, int expectedNumber) {
         //given when
         int actualNumber = solution.pivotIndex(currentArray);
-        //
+        //then
         assertEquals(expectedNumber, actualNumber);
     }
 
