@@ -18,8 +18,13 @@ dependencies {
 
     implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:${junitVersion}'
-
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:${junitVersion}'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:${junitVersion}'
+    // https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.8.0'
+// https://mvnrepository.com/artifact/org.mockito/mockito-core
+    testImplementation 'org.mockito:mockito-core:4.8.0'
+
 }
 
 test {
