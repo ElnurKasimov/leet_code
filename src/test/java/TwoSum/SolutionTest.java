@@ -67,9 +67,27 @@ class SolutionTest {
         int[] nums = new int[length];
         //when then
        assertDoesNotThrow(()-> solution.twoSum(nums, 30));
-
     }
 
+    @ParameterizedTest(name = "#{index} - Test with incorrect content of array = {0}")
+    @ValueSource(ints = {350, 110, -110, 200})
+    void testThatParametrizedArrayContentAbsolutValueThan109 (int content) {
+        //given
+        int[] nums = new int[20];
+        nums[5] = content;
+        //when then
+        assertThrows(IllegalArgumentException.class,() -> solution.twoSum(nums, 30));
+
+    }
+    @ParameterizedTest(name = "#{index} - Test with correct content of array = {0}")
+    @ValueSource(ints = {-109, -5, 50, 109})
+    void testThatParametrizedArrayContentLessThan110 (int content) {
+        //given
+        int[] nums = new int[20];
+        nums[10] = content;
+        //when then
+        assertDoesNotThrow(() -> solution.twoSum(nums, 30));
+    }
     @ParameterizedTest(name = "#{index} - Test with incorrect targetValue = {0}")
     @ValueSource(ints = {-200, -110, 110, 500})
     void testThatParametrizedTwoSumAbsoluteValueTargetMoreThan110 (int value) {
