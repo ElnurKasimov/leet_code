@@ -24,16 +24,20 @@ class Solution {
     private static final int MAX_CONTENT = 109;
 
     public int[] twoSum(int[] nums, int target) throws IllegalArgumentException, ArrayIndexOutOfBoundsException {
-        if (target < MIN_TARGET || target > MAX_TARGET) {
-            throw new IllegalArgumentException();
-        }
-        if (nums.length < MIN_ARRAY_LENGTH || nums.length > MAX_ARRAY_LENGTH) {
-            throw new ArrayIndexOutOfBoundsException();
-        }
-        for (int num : nums) {
-            if (num < MIN_CONTENT || num > MAX_CONTENT) {
-                throw new IllegalArgumentException();
+        try {
+            if (target < MIN_TARGET || target > MAX_TARGET) {
+                throw new IllegalArgumentException("Target is out of allowed value.");
             }
+            if (nums.length < MIN_ARRAY_LENGTH || nums.length > MAX_ARRAY_LENGTH) {
+            throw new ArrayIndexOutOfBoundsException("Array length is out of allowed value.");
+            }
+            for (int num : nums) {
+                    if (num < MIN_CONTENT || num > MAX_CONTENT) {
+                        throw new IllegalArgumentException("Array element  is out of allowed value.");
+                    }
+           }
+        } catch (RuntimeException ex) {
+            ex.printStackTrace();
         }
         int[] result = {0,0};
         for (int i=0; i<nums.length-1; i++) {
@@ -49,14 +53,5 @@ class Solution {
     }
 
     public int sum (int a, int b) {return a+b;}
-
-//    public static void main(String[] args) {
-//        Solution solution = new Solution();
-//        int[] nums = {1, 115, -15, -9, 4, 7};
-//        int target = 110;
-//        System.out.println("solution.twoSum(nums,target)[0] = " + solution.twoSum(nums, target)[0]);
-//        System.out.println("solution.twoSum(nums,target)[1] = " + solution.twoSum(nums, target)[1]);
-//    }
-
 
 }

@@ -105,6 +105,16 @@ class SolutionTest {
         assertDoesNotThrow(() -> solution.twoSum(nums, value));
     }
 
+    @ParameterizedTest(name = "#{index} - Test with arguments nums = {0} and target = {1} returns expectedResult = {2}")
+    @MethodSource("predefinedTwoSumData")
+    void testParametrizedTwoSumWorksCorrectly (int[] nums, int target, int[] expectedResult) {
+        //given when
+        int[] actualResult = solution.twoSum(nums, target);
+        //then
+        assertEquals(expectedResult[0], actualResult[0]);
+        assertEquals(expectedResult[1], actualResult[1]);
+    }
+
     private static Stream<Arguments> predefinedSumData() {
         return
                 Stream.of(
@@ -114,8 +124,12 @@ class SolutionTest {
                 );
     }
 
-    private int[] prepareArray(int length) {
-        return new int[length];
+    private static Stream<Arguments> predefinedTwoSumData() {
+        return
+                Stream.of(
+                        Arguments.arguments(new int[]{2,7,11,15}, 9,  new int[]{0,1}),
+                        Arguments.arguments(new int[]{3, 2, 4}, 6, new int[]{1,2}),
+                        Arguments.arguments(new int[]{3, 3}, 6, new int[]{0,1})
+                );
     }
-
 }
