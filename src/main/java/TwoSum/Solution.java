@@ -16,13 +16,22 @@ package TwoSum;
 
 
 class Solution {
-
+    private static final int MIN_TARGET = -109;
+    private static final int MAX_TARGET = 109;
+    private static final int MIN_ARRAY_LENGTH = 2;
+    private static final int MAX_ARRAY_LENGTH = 104;
     public int[] twoSum(int[] nums, int target) {
+        if (target < MIN_TARGET || target > MAX_TARGET) {
+            throw new IllegalArgumentException();
+        }
+        if (nums.length < MIN_ARRAY_LENGTH || nums.length > MAX_ARRAY_LENGTH) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
 
         return new int[]{0,0};
     }
 
-    public int sum (int a, int b) {return 0;}
+    public int sum (int a, int b) {return a+b;}
 
 
 }
