@@ -58,8 +58,8 @@ class SolutionTest {
         int[] nums = new int[length];
         //when then
         assertThrows(ArrayIndexOutOfBoundsException.class,() -> solution.twoSum(nums, 30));
-
     }
+
     @ParameterizedTest(name = "#{index} - Test with lengthArray = {0}")
     @ValueSource(ints = {2, 5, 50, 104})
     void testThatParametrizedArgumentArrayLengthMoreThanOneAndLessThan105 (int length) {
