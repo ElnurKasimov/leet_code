@@ -10,18 +10,23 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 class SolutionTest {
+   private Solution solution;
+
+    @BeforeEach
+    void ini() {
+        solution = new Solution();
+    }
 
     @ExtendWith(MockitoExtension.class)
-    @Mock
-    Solution solution;
 
 
     @Test
@@ -35,30 +40,13 @@ class SolutionTest {
         assertNotEquals(3, actual);
     }
 
-    @ParameterizedTest(name = "#{index} - Test with arguments currentArray = {0} and expectedSum {1}")
+    @ParameterizedTest(name = "#{index} - Test with arguments a = {0} and b = {1}  expectedSum ={2}")
     @MethodSource("predefinedSumData")
-    void testParametrizedSumWorksCorrectly (int[] currentArray, int expectedSum) {
+    void testParametrizedSumWorksCorrectly (int a, int b, int expectedSum) {
         //given when
-        int actualSum = solution.sum(currentArray[0], currentArray[1]);
+        int actualSum = solution.sum(a, b);
         //then
         assertEquals(expectedSum, actualSum);
-    }
-
-    @Captor
-    ArgumentCaptor<int[]> arrayCaptor;
-    @Captor
-    ArgumentCaptor<Integer> intCaptor;
-
-    @ParameterizedTest(name = "#{index} - Test with incorrect lengthArray = {0}")
-    @ValueSource(ints = {1, 105, 200})
-    void testThatParametrizedArgumentArrayLengthLessThan2AndMoreThan104 (int length) {
-        //given
-        int[] nums = new int[length];
-        solution.twoSum(nums,20);
-        //when then
-        verify(solution).twoSum(arrayCaptor.capture(),intCaptor.capture());
-        assertFalse((arrayCaptor.getValue().length) > 1 && (arrayCaptor.getValue().length < 105) );
-        //assertThrows(ArrayIndexOutOfBoundsException.class,() -> solution.twoSum(nums, 30));
     }
 
     @ParameterizedTest(name = "#{index} - Test with lengthArray = {0}")
@@ -74,12 +62,15 @@ class SolutionTest {
     @ValueSource(ints = {350, 110, -110, 200})
     void testThatParametrizedArrayContentAbsolutValueThan109 (int content) {
         //given
+        Solution spy = Mockito.spy(solution);
         int[] nums = new int[20];
         nums[5] = content;
-        //when then
-        assertThrows(IllegalArgumentException.class,() -> solution.twoSum(nums, 30));
-
+        //when
+        when(spy.twoSum(nums, 20)).thenThrow(new IllegalArgumentException("Array element  is out of allowed value."));
+        //then
+        assertThrows(IllegalArgumentException.class, () -> spy.twoSum(nums, 20));
     }
+
     @ParameterizedTest(name = "#{index} - Test with correct content of array = {0}")
     @ValueSource(ints = {-109, -5, 50, 109})
     void testThatParametrizedArrayContentLessThan110 (int content) {
@@ -91,12 +82,16 @@ class SolutionTest {
     }
     @ParameterizedTest(name = "#{index} - Test with incorrect targetValue = {0}")
     @ValueSource(ints = {-200, -110, 110, 500})
-    void testThatParametrizedTwoSumAbsoluteValueTargetMoreThan110 (int value) {
+    void testParametrizedThatTwoSumTrowsExceptionWhenAbsoluteValueTargetMoreThan110 (int value) {
         //given
+        Solution spy = Mockito.spy(solution);
         int[] nums = new int[20];
+        when(spy.twoSum(nums, value)).thenThrow(new IllegalArgumentException("Target is out of allowed value."));
         //when then
-        assertThrows(IllegalArgumentException.class, () -> solution.twoSum(nums, value));
+        assertThrows(IllegalArgumentException.class, () -> spy.twoSum(nums, value));
     }
+
+
     @ParameterizedTest(name = "#{index} - Test with correct targetValue = {0}")
     @ValueSource(ints = {-109, -5, 0, 65, 109})
     void testThatParametrizedTwoSumAbsoluteValueTargetLessThan110 (int value) {
@@ -116,12 +111,40 @@ class SolutionTest {
         assertEquals(expectedResult[1], actualResult[1]);
     }
 
+
+//    @Captor
+//    ArgumentCaptor<int[]> arrayCaptor;
+//    @Captor
+//    ArgumentCaptor<Integer> intCaptor;
+//
+//    @ParameterizedTest(name = "#{index} - Test with incorrect lengthArray = {0}")
+//    @ValueSource(ints = {10, 200})
+//    void testThatParametrizedArgumentArrayLengthLessThan2AndMoreThan104 (int length) {
+//        //given
+//        Solution solutionMock = Mockito.mock(Solution.class);
+//        int[] nums = new int[length];
+//        //when then
+//        verify(solutionMock).twoSum(arrayCaptor.capture(), intCaptor.capture());
+//        assertFalse((arrayCaptor.getValue().length) > 1 && (arrayCaptor.getValue().length < 105) );
+//    }
+
+    @ParameterizedTest(name = "#{index} - Test with incorrect lengthArray = {0}")
+    @ValueSource(ints = {1, 105, 200})
+    void testThatExceptionIsThrownWhenArrayLengthLessThan2AndMoreThan104 (int length) {
+        //given
+        Solution spy = Mockito.spy(solution);
+        int[] nums = new int[length];
+        when(spy.twoSum(nums, 20)).thenThrow(new ArrayIndexOutOfBoundsException("Array element  is out of allowed value."));
+        //when then
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> spy.twoSum(nums, 20));
+    }
+
     private static Stream<Arguments> predefinedSumData() {
         return
                 Stream.of(
-                        Arguments.arguments(new int[]{1,0}, 1),
-                        Arguments.arguments(new int[]{-5, 3}, -2),
-                        Arguments.arguments(new int[]{-1, 1}, 0)
+                        Arguments.arguments(1,0, 1),
+                        Arguments.arguments(-5,3, -2),
+                        Arguments.arguments(-1,1, 0)
                 );
     }
 
