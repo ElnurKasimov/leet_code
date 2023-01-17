@@ -21,7 +21,8 @@ class SolutionTest {
         //given
         int[][] inputMatrix = new int[length][5];
         //when then
-        assertThrows(ArrayIndexOutOfBoundsException.class,() -> solution.transpose(inputMatrix));
+        Throwable exception = assertThrows(ArrayIndexOutOfBoundsException.class,() -> solution.transpose(inputMatrix));
+        assertEquals("Array length is out of allowed value.", exception.getMessage());
     }
 
 }

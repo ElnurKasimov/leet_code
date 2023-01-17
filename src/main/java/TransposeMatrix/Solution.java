@@ -22,7 +22,19 @@ class Solution {
     private static final int MAX_ABSOLUTE_VALUE = 109;
 
     public int[][] transpose(int[][] inputMatrix) {
+        try {
+            if (inputMatrix.length < MIN_MATRIX_LENGTH || inputMatrix.length > MAX_MATRIX_LENGTH) {
+                throw new ArrayIndexOutOfBoundsException("Array length is out of allowed value.");
+            }
+//            for (int num : nums) {
+//                if (num < MIN_CONTENT || num > MAX_CONTENT) {
+//                    throw new IllegalArgumentException("Array element  is out of allowed value.");
+//                }
+//            }
 
+        } catch (RuntimeException ex) {
+            ex.printStackTrace();
+        }
     return new int[2][2];
     }
 }

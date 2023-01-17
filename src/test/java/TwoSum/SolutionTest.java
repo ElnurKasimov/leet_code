@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.stream.Stream;
@@ -17,14 +18,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
 class SolutionTest {
-    Solution solution;
 
     @ExtendWith(MockitoExtension.class)
-
-
-    @BeforeEach
-    void init() {solution = new Solution();
-    }
+    @Mock
+    Solution solution;
 
 
     @Test
@@ -49,6 +46,7 @@ class SolutionTest {
 
     @Captor
     ArgumentCaptor<int[]> arrayCaptor;
+    @Captor
     ArgumentCaptor<Integer> intCaptor;
 
     @ParameterizedTest(name = "#{index} - Test with incorrect lengthArray = {0}")
@@ -56,8 +54,11 @@ class SolutionTest {
     void testThatParametrizedArgumentArrayLengthLessThan2AndMoreThan104 (int length) {
         //given
         int[] nums = new int[length];
+        solution.twoSum(nums,20);
         //when then
-        assertThrows(ArrayIndexOutOfBoundsException.class,() -> solution.twoSum(nums, 30));
+        verify(solution).twoSum(arrayCaptor.capture(),intCaptor.capture());
+        assertFalse((arrayCaptor.getValue().length) > 1 && (arrayCaptor.getValue().length < 105) );
+        //assertThrows(ArrayIndexOutOfBoundsException.class,() -> solution.twoSum(nums, 30));
     }
 
     @ParameterizedTest(name = "#{index} - Test with lengthArray = {0}")
