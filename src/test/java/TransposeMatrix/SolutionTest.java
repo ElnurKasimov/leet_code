@@ -1,22 +1,15 @@
 package TransposeMatrix;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.Arrays;
 import java.util.stream.Stream;
-
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+
 
 class SolutionTest {
     Solution solution;
@@ -104,31 +97,6 @@ class SolutionTest {
         assertDoesNotThrow(() -> solution.transpose(inputMatrix));
     }
 
-    @ParameterizedTest(name = "#{index} - Test with MatrixLength = {0} and MatrixRowLength = {1} " +
-            " doesn't throw exceptions")
-    @MethodSource("predefinedSymmetricMatrixDimensionsData")
-    void testThatWhenMatrixSymmetricDoesNotTrowException (int arrayLength, int arrayRowLength) {
-        //given
-        int [][] inputMatrix = new int[arrayLength][arrayRowLength];
-        //when
-        solution.transpose(inputMatrix);
-        assertDoesNotThrow(() -> solution.transpose(inputMatrix));
-    }
-
-    @ParameterizedTest(name = "#{index} - Test with MatrixLength = {0} and MatrixRowLength = {1} " +
-            "throws exceptions")
-    @MethodSource("predefinedAsymmetricMatrixDimensionsData")
-    void testThatWhenMatrixAsymmetricTrowsException (int arrayLength, int arrayRowLength) {
-        //given
-        int [][] inputMatrix = new int[arrayLength][arrayRowLength];
-        //when
-        try {
-            solution.transpose(inputMatrix);
-        } catch (IllegalArgumentException ex) {
-        //then
-        assertThrows(IllegalArgumentException.class, () -> solution.transpose(inputMatrix));
-        }
-    }
 
     @ParameterizedTest(name = "#{index} - Test with matrix = {0} throws exceptions for its element")
     @MethodSource("predefinedWrongMatrixElementData")
@@ -152,30 +120,6 @@ class SolutionTest {
 
     }
 
-//    @ParameterizedTest(name = "#{index} - Test with incorrect lengthArray = {0}")
-//    @ValueSource(ints = {0, 1001, 2000})
-//    void testThatArrayLengthLessThan1AndMoreThan1000 (int length) {
-//        //given
-//        Solution spy = Mockito.spy(solution);
-//        int[][] inputMatrix = new int[length][5];
-//        //when
-//        when(spy.transpose(inputMatrix)).thenThrow(new ArrayIndexOutOfBoundsException("Array length is out of allowed value."));
-//        // then
-//        assertThrows(ArrayIndexOutOfBoundsException.class, () -> spy.transpose(inputMatrix));
-//    }
-
-//    @ParameterizedTest(name = "#{index} - Test with correct lengthArray = {0}")
-//    @ValueSource(ints = {1, 118, 1000})
-//    void testThatArrayLengthMoreThan0AndLessThan1001 (int length) {
-//        //given
-//        //Solution spy = Mockito.spy(solution);
-//        int[][] inputMatrix = new int[length][5];
-//        //when
-//        //when(spy.transpose(inputMatrix)).thenThrow(new ArrayIndexOutOfBoundsException("Array length is out of allowed value."));
-//        // then
-//       assertDoesNotThrow( () -> solution.transpose(inputMatrix));
-//    }
-
 
     private static Stream<Arguments> predefinedWrongMatrixDimensionsData() {
         return
@@ -194,24 +138,6 @@ class SolutionTest {
                         Arguments.arguments(1,105),
                         Arguments.arguments(5,20),
                         Arguments.arguments(10, 10)
-                );
-    }
-
-    private static Stream<Arguments> predefinedSymmetricMatrixDimensionsData() {
-        return
-                Stream.of(
-                        Arguments.arguments(1,1),
-                        Arguments.arguments(5,5),
-                        Arguments.arguments(10, 10)
-                );
-    }
-
-    private static Stream<Arguments> predefinedAsymmetricMatrixDimensionsData() {
-        return
-                Stream.of(
-                        Arguments.arguments(1,2),
-                        Arguments.arguments(3,2),
-                        Arguments.arguments(10, 9)
                 );
     }
 
