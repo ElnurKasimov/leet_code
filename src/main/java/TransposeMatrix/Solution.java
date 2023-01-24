@@ -24,26 +24,31 @@ class Solution {
     public int[][] transpose(int[][] inputMatrix) {
         try {
             if (inputMatrix.length < MIN_MATRIX_LENGTH || inputMatrix.length > MAX_MATRIX_LENGTH) {
-                throw new ArrayIndexOutOfBoundsException("Array length is out of allowed value.");
+                throw new ArrayIndexOutOfBoundsException("Matrix length is out of allowed value.");
             }
             for (int i=0; i<inputMatrix.length; i++) {
                 if (inputMatrix[i].length < MIN_MATRIX_I_LENGTH || inputMatrix[i].length > MAX_MATRIX_I_LENGTH) {
-                    throw new ArrayIndexOutOfBoundsException("Array length is out of allowed value.");
+                    throw new ArrayIndexOutOfBoundsException("Matrix row length is out of allowed value.");
                 }
             }
-
-//            for (int i=0; i<inputMatrix.length; i++) {
-//                for (int j = 0; j < inputMatrix[i].length; j++) {
-//                     if (num < MIN_CONTENT || num > MAX_CONTENT) {
-//                    throw new IllegalArgumentException("Array element  is out of allowed value.");
-//                }
-//                }
-
-
-
-
-
-
+            for (int i=0; i<inputMatrix.length; i++) {
+                int product = inputMatrix.length * inputMatrix[i].length;
+                if ( product < MIN_PRODUCT_MATRIX_DIMENSIONS || product > MAX_PRODUCT_MATRIX_DIMENSIONS) {
+                    throw new IllegalArgumentException("Product matrix dimensions is out of allowed value.");
+                }
+            }
+            for (int i=0; i<inputMatrix.length; i++) {
+                if(inputMatrix.length != inputMatrix[i].length){
+                    throw new IllegalArgumentException("Matrix has to be symmetric.");
+                }
+            }
+            for (int i=0; i<inputMatrix.length; i++) {
+                for (int j = 0; j < inputMatrix[i].length; j++) {
+                    if (inputMatrix[i][j] < -1 * MAX_ABSOLUTE_VALUE || inputMatrix[i][j] > MAX_ABSOLUTE_VALUE) {
+                        throw new IllegalArgumentException("Matrix element is out of allowed value.");
+                    }
+                }
+            }
         } catch (RuntimeException ex) {
             ex.printStackTrace();
         }
