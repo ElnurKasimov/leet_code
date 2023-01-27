@@ -1,13 +1,11 @@
-package TransposeMatrix;
+package easy.TransposeMatrix;
 
-import org.junit.jupiter.api.BeforeAll;
+import easy.TransposeMatrix.Solution;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
