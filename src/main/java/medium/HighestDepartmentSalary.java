@@ -42,4 +42,5 @@ public class HighestDepartmentSalary {
 //            (4,'Sam',60000,2),
 //            (5,'Max',90000,1);
 
+
 }
