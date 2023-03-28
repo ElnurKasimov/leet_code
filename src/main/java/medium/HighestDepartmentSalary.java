@@ -1,7 +1,6 @@
 package medium;
 
 public class HighestDepartmentSalary {
-
 //    TASK - 184. Department Highest Salary
 //
 //    MY SOLUTION
@@ -13,7 +12,6 @@ public class HighestDepartmentSalary {
 //    SELECT d.name AS Department, e.name AS Employee, salary AS Salary
 //    FROM Employee AS e LEFT JOIN Department AS d ON d.id = e.departmentid
 //    WHERE (e.departmentId, salary) IN (select departmentId,max(salary) from employee group BY departmentId);
-
 
 //    POPULATION
 //    CREATE TABLE Department(
