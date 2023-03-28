@@ -2,7 +2,7 @@ package medium;
 
 public class HighestDepartmentSalary {
 //    TASK - 184. Department Highest Salary
-//
+
 //    MY SOLUTION
 //    SELECT d.name AS Department, e.name AS Employee, salary AS Salary
 //    FROM Employee AS e LEFT JOIN Department AS d ON d.id = e.departmentId
