@@ -1,4 +1,4 @@
-package medium;
+package hard;
 
 public class ThreeHighestDepartmentSalary {
 //    TASK - 185. Department Top Three Salaries
