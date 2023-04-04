@@ -2,9 +2,10 @@ package medium;
 
 public class SecondHighestSalary {
 //    MY SOLUTION
-//    SELECT d.name AS Department, e.name AS Employee, salary AS Salary
-//    FROM Employee AS e LEFT JOIN Department AS d ON d.id = e.departmentId
-//    WHERE e.salary = (select max(salary) from employee WHERE departmentId = d.id group BY departmentId);
+//    SELECT salary AS SecondHighestSalary FROM employee ORDER BY salary DESC OFFSET 1 ROWS LIMIT 1;
+
+//    SELECT salary AS SecondHighestSalary FROM employee where salary < (SELECT MAX(salary) FROM employee)
+//    ORDER BY salary DESC LIMIT 1;
 
 //    LEET CODE SOLUTION
 
