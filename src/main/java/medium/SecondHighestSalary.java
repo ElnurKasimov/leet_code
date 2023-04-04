@@ -9,6 +9,7 @@ public class SecondHighestSalary {
 
 //    LEET CODE SOLUTION
 
+
 //    POPULATION
 //    CREATE TABLE Employee (
 //            id INTEGER PRIMARY KEY,
