@@ -1,13 +1,27 @@
 package medium;
 
 public class SecondHighestSalary {
-//    MY SOLUTION
+
+//    TASK - 176. Second Highest Salary
+
+//    SOLUTION 1 - not correct. Doesn't work proper if the highest salary occurs more than 1 time
 //    SELECT salary AS SecondHighestSalary FROM employee ORDER BY salary DESC OFFSET 1 ROWS LIMIT 1;
 
+//    SOLUTION 2 - not correct. Doesn't return 'NULL' if there is no records in result set
 //    SELECT salary AS SecondHighestSalary FROM employee where salary < (SELECT MAX(salary) FROM employee)
 //    ORDER BY salary DESC LIMIT 1;
 
-//    LEET CODE SOLUTION
+//    SOLUTION 3 - correct.
+//    SELECT (SELECT salary FROM employee where salary < (SELECT MAX(salary) FROM employee)
+//    ORDER BY salary DESC LIMIT 1) AS SecondHighestSalary;
+
+//    SOLUTION 4 - correct. Uses CASE-WHEN-THEN-ELSE-END syntax
+//    SELECT CASE
+//          WHEN COUNT(*)=0 THEN NULL
+//          ELSE (SELECT salary FROM employee where salary < (SELECT MAX(salary) FROM employee)
+//               ORDER BY salary DESC LIMIT 1)
+//          END
+//    AS SecondHighestSalary;
 
 
 //    POPULATION
