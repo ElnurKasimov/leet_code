@@ -6,7 +6,6 @@ public class UpdateWithCase {
 
 //    SOLUTION
 
-
 //    LEET CODE SOLUTION - doesn't work in POstgreSQL
 //    UPDATE salary SET sex = CASE sex
 //                              WHEN 'm' THEN 'f'
