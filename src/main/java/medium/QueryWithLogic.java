@@ -1,6 +1,6 @@
 package medium;
 
-public class SecondHighestSalary {
+public class QueryWithLogic {
 
 //    TASK - 176. Second Highest Salary
 
