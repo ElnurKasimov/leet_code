@@ -3,8 +3,11 @@ public class GroupByDate {
 
 //    TASK - 1667. Fix Names in a Table
 
-//    SOLUTION 1 - doesn't work in MySQL (there is no INITCAP function)
-//      UPDATE users set name = INITCAP(name);
+//    SOLUTION 1 - doesn't work in MySQL (there is no STRING_AGG function)
+//SELECT sell_date, COUNT(product) AS num_sold,
+//    STRING_AGG(product,',')
+//    FROM Activities
+//    GROUP BY sell_date;
 
 //    LEET CODE SOLUTION - MySQL
 //  SELECT
@@ -28,4 +31,5 @@ public class GroupByDate {
 //        ('2020-06-01', 'Bible'),
 //        ('2020-06-02', 'Mask'),
 //        ('2020-05-30', 'T-Shirt');
+//      INSERT INTO Activities (sell_date, product) VALUES ('2020-04-01', 'Desk');
 }
