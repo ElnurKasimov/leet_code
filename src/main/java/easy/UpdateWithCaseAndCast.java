@@ -13,13 +13,13 @@ public class UpdateWithCaseAndCast {
 //                              ELSE 'm'
 //                            END;
 
-//    POPULATION (added UNUM and altered table)
+//    POPULATION (added ENUM and altered table)
 //    CREATE TYPE sex AS ENUM ('m', 'f');
 //    ALTER TABLE Employee add column sex sex;
-//    UPDATE Employee SET SEX = 'm' WHERE id=1;
-//    UPDATE Employee SET SEX = 'm' WHERE id=2;
-//    UPDATE Employee SET SEX = 'm' WHERE id=3;
-//    UPDATE Employee SET SEX = 'f' WHERE id=4;
-//    UPDATE Employee SET SEX = 'm' WHERE id=5;
+//    UPDATE Employee SET sex = 'm' WHERE id=1;
+//    UPDATE Employee SET sex = 'm' WHERE id=2;
+//    UPDATE Employee SET sex = 'm' WHERE id=3;
+//    UPDATE Employee SET sex = 'f' WHERE id=4;
+//    UPDATE Employee SET sex = 'm' WHERE id=5;
 
 }
