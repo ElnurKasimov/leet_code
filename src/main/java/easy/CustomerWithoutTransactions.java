@@ -8,6 +8,13 @@ public class CustomerWithoutTransactions {
 //            (SELECT v.customer_id FROM Visits V LEFT JOIN Transactions T ON V.visit_id = T.visit_id WHERE T.transaction_id IS NULL)
 //    AS temp GROUP BY customer_id;
 
+    //    MORE  PRETTY SOLUTION
+//    select customer_id, count(visit_id) as count_no_trans
+//    from visits where visit_id not in (select visit_id from transactions)
+//    group by customer_id;
+
+
+
 //       POPULATION
 //CREATE TABLE Visits (
 //            visit_id INTEGER PRIMARY KEY,
