@@ -1,8 +1,9 @@
 package easy;
 
-public class SalesPersom {
+public class SalesPerson {
 
  //    TASK  - 607. Sales Person
+
 
 //    MY SOLUTION
 
