@@ -1,4 +1,4 @@
-package easy;
+package easy.SQL;
 public class StringFunctions {
 
 //    TASK - 1667. Fix Names in a Table

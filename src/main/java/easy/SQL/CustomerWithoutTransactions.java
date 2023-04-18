@@ -1,4 +1,4 @@
-package easy;
+package easy.SQL;
 public class CustomerWithoutTransactions {
 
 //    TASK - 1581. Customer Who Visited but Did Not Make Any Transactions

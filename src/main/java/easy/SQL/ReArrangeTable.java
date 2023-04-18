@@ -1,4 +1,4 @@
-package easy;
+package easy.SQL;
 public class ReArrangeTable {
 
 //    TASK - 1795. Rearrange Products Table
