@@ -1,11 +1,12 @@
 package easy.PivotIndex;
 
-import easy.PivotIndex.Solution;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
 import java.util.Random;
 import java.util.stream.Stream;
 
