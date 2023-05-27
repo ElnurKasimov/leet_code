@@ -12,8 +12,6 @@ public class SalesPerson {
 //    LEET-CODE SOLUTION
 
 
-
-
 //    POPULATION
 //CREATE TABLE SalesPerson (
 //            sales_id INTEGER PRIMARY KEY,
