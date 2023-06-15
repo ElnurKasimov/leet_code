@@ -14,7 +14,8 @@ public class UserActivitiesForPast30Days {
 
 //    POPULATION
 //Create table If Not Exists Activity (
-// user_id int, session_id int,
+// user_id BIGDECIMAL PRIMARY KEY,
+// session_id int,
 // activity_date date,
 // activity_type ENUM('open_session', 'end_session', 'scroll_down', 'send_message')
 // )
