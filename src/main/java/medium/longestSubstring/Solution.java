@@ -34,8 +34,8 @@ class Solution {
     }
 
     public int getMaxSubstringLength(String inputString) {
-        String temporaryString = "";
         int i = 0;
+        String temporaryString = "";
         char[] chars = inputString.toCharArray();
         while (i < chars.length && !temporaryString.contains(chars[i] + "")) {
             temporaryString += chars[i];
